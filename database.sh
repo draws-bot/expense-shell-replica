@@ -5,7 +5,7 @@ source ./common.sh
 check_root
 
 echo "plz enter your mysql password"
-read "password"
+read password
 
 
 dnf install mysql-server -y &>>$LOGFILE
@@ -26,10 +26,10 @@ systemctl start mysqld &>>$LOGFILE
 #VALIDATE $?  "SETTING USER AND PASSWORD"
 
 #Below code will be useful for idempotent nature
-mysql -h 172.31.25.227 -uroot -p${password} -e 'show databases;' &>>$LOGFILE
+mysql -h 172.31.25.227 -uroot -p${password} -e 'show databases;' 
 if [ $? -ne 0 ]
 then
-     mysql_secure_installation --set-root-pass ${password} &>>$LOGFILE
+     mysql_secure_installation --set-root-pass ${password}
 else
     echo  -e "already username and password is set ..$R..SKIPPING $N"
 fi
