@@ -1,8 +1,11 @@
 #!/bin/bash
 
-source ./ common.sh
+source ./common.sh
 
-set -e
+check_root
+
+echo "plz enter your mysql password"
+read "password"
 
 
 dnf install mysql-server -y
