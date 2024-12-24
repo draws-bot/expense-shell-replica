@@ -23,7 +23,7 @@ systemctl start mysqld
 #VALIDATE $?  "SETTING USER AND PASSWORD"
 
 #Below code will be useful for idempotent nature
-mysql -h 172.31.19.151 -uroot -p${password} -e 'show databases;'
+mysql -h 172.31.26.15 -uroot -p${password} -e 'show databases;'
 if [ $? -ne 0 ]
 then
      mysql_secure_installation --set-root-pass ${password}
