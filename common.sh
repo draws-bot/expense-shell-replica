@@ -6,8 +6,7 @@ set -e
 userid=$(id -u)
 R="\e[31m"
 N="\e[0m"
-echo "plz enter your mysql password"
-read "password"
+
 
 VALIDATE(){
     if [ $1 -ne 0 ]
