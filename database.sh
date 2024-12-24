@@ -8,16 +8,16 @@ echo "plz enter your mysql password"
 read "password"
 
 
-dnf install mysql-serverbcjsd -y
+dnf install mysql-server -y &>>$LOGFILE
 
 #VALIDATE $?  "INSTALLING MYSQL"
 
-systemctl enable mysqld
+systemctl enable mysqld &>>$LOGFILE
 
 #VALIDATE $?  "ENABLE MYSQL"
 
 
-systemctl start mysqld
+systemctl start mysqld &>>$LOGFILE
 
 #VALIDATE $?  "START MYSQL"
 
@@ -26,10 +26,10 @@ systemctl start mysqld
 #VALIDATE $?  "SETTING USER AND PASSWORD"
 
 #Below code will be useful for idempotent nature
-mysql -h 172.31.26.15 -uroot -p${password} -e 'show databases;'
+mysql -h 172.31.25.227 -uroot -p${password} -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
-     mysql_secure_installation --set-root-pass ${password}
+     mysql_secure_installation --set-root-pass ${password} &>>$LOGFILE
 else
     echo  -e "already username and password is set ..$R..SKIPPING $N"
 fi
