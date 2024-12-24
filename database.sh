@@ -1,42 +1,22 @@
 #!/bin/bash
 
-userid=$(id -u)
-R="\e[31m"
-N="\e[0m"
-echo "plz enter your mysql password"
-read "password"
+source ./ common.sh
 
-VALIDATE(){
-    if [ $1 -ne 0 ]
-    then
-    echo "$2 IS ....FAILURE"
-    exit 1
-    else
-    echo "$2 is .....success"
-    fi
-}
-
-if [ $userid -ne 0 ]
-then
-    echo "you are not in super user:"
-    exit 1
-else
-    echo "you are at super user"
-fi
+set -e
 
 
 dnf install mysql-server -y
 
-VALIDATE $?  "INSTALLING MYSQL"
+#VALIDATE $?  "INSTALLING MYSQL"
 
 systemctl enable mysqld
 
-VALIDATE $?  "ENABLE MYSQL"
+#VALIDATE $?  "ENABLE MYSQL"
 
 
 systemctl start mysqld
 
-VALIDATE $?  "START MYSQL"
+#VALIDATE $?  "START MYSQL"
 
 #mysql_secure_installation --set-root-pass ExpenseApp@1
 
