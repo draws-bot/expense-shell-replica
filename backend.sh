@@ -5,6 +5,9 @@ source ./common.sh
 
 check_root
 
+echo "plz enter your mysql password"
+read mysql_root_password
+
 
 dnf module disable nodejs -y
 #VALIDATE $? "disable nodejs"
@@ -62,7 +65,7 @@ dnf install mysql -y
 #VALIDATE $?  "mysql install"
 
 
-mysql -h 172.31.28.68 -uroot -p${password} < /app/schema/backend.sql
+mysql -h 172.31.28.68 -uroot -p${mysql_root_password} < /app/schema/backend.sql
 
 #VALIDATE $?  "schema is loading"
 
