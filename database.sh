@@ -25,21 +25,13 @@ systemctl start mysqld &>>$LOGFILE
 
 #VALIDATE $?  "SETTING USER AND PASSWORD"
 
-#Below code will be useful for idempotent nature
-#mysql -h 172.31.25.227 -uroot -p${password} -e 'show databases;' 
-#if [ $? -ne 0 ]
-#then
-#     mysql_secure_installation --set-root-pass ${password}
-#else
-#    echo  -e "already username and password is set ..$R..SKIPPING $N"
-#fi
-
-
-mysql -h 172.31.22.191 -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
+Below code will be useful for idempotent nature
+mysql -h db.daws78s.online -uroot -p${password} -e 'show databases;' 
 if [ $? -ne 0 ]
 then
-    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
-    VALIDATE $? "MySQL Root password Setup"
+     mysql_secure_installation --set-root-pass ${password}
 else
-    echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
+    echo  -e "already username and password is set ..$R..SKIPPING $N"
 fi
+
+
