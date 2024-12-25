@@ -10,16 +10,16 @@ read mysql_root_password
 
 dnf install mysql-server -y &>>$LOGFILE
 
-#VALIDATE $?  "INSTALLING MYSQL"
+VALIDATE $?  "INSTALLING MYSQL"
 
 systemctl enable mysqld &>>$LOGFILE
 
-#VALIDATE $?  "ENABLE MYSQL"
+VALIDATE $?  "ENABLE MYSQL"
 
 
 systemctl start mysqld &>>$LOGFILE
 
-#VALIDATE $?  "START MYSQL"
+VALIDATE $?  "START MYSQL"
 
 #mysql_secure_installation --set-root-pass ExpenseApp@1
 
@@ -30,6 +30,7 @@ mysql -h db.daws78s.online -uroot -p${mysql_root_password} -e 'show databases;'
 if [ $? -ne 0 ]
 then
      mysql_secure_installation --set-root-pass ${mysql_root_password}
+     echo "root password set up done "
 else
     echo  -e "already username and password is set ..$R..SKIPPING $N"
 fi
