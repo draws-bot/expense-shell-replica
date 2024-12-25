@@ -17,7 +17,7 @@ systemctl enable mysqld &>>$LOGFILE
 #VALIDATE $?  "ENABLE MYSQL"
 
 
-systemctl start mysqlddse &>>$LOGFILE
+systemctl start mysqld &>>$LOGFILE
 
 #VALIDATE $?  "START MYSQL"
 
