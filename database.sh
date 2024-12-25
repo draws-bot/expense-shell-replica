@@ -25,7 +25,7 @@ systemctl start mysqld &>>$LOGFILE
 
 #VALIDATE $?  "SETTING USER AND PASSWORD"
 
-Below code will be useful for idempotent nature
+#Below code will be useful for idempotent nature
 mysql -h db.daws78s.online -uroot -p${password} -e 'show databases;' 
 if [ $? -ne 0 ]
 then
