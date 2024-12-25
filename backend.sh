@@ -45,7 +45,7 @@ cd /app
 npm install
 #VALIDATE $?  "npm install succesfull"
 
-cp /home/ec2-user/expense-document/backend.service     /etc/systemd/system/backend.service                                                   
+cp /home/ec2-user/expense-shell-replica/backend.service     /etc/systemd/system/backend.service                                                   
 
 
 systemctl daemon-reload
