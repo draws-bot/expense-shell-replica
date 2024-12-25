@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#set -e
+set -e
 
-#handle_error(){
-#    echo "Error occured at line number: $1, error command: $2"
-#}
+handle_error(){
+    echo "Error occured at line number: $1, error command: $2"
+}
 
 trap 'handle_error ${LINENO} "$BASH_COMMAND"' ERR
 
