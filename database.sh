@@ -26,7 +26,7 @@ systemctl start mysqld &>>$LOGFILE
 #VALIDATE $?  "SETTING USER AND PASSWORD"
 
 #Below code will be useful for idempotent nature
-mysql -h 172.31.18.105 -uroot -p${mysql_root_password} -e 'show databases;'
+mysql -h db.daws78s.online -uroot -p${mysql_root_password} -e 'show databases;'
 if [ $? -ne 0 ]
 then
      mysql_secure_installation --set-root-pass ${mysql_root_password}
