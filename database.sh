@@ -8,16 +8,16 @@ echo "plz enter your mysql password"
 read mysql_root_password
 
 
-dnf install mysql-server -y
+dnf install mysql-serverfvdfvd -y &>>$LOGFILE
 
 #VALIDATE $?  "INSTALLING MYSQL"
 
-systemctl enable mysqld 
+systemctl enable mysqld &>>$LOGFILE
 
 #VALIDATE $?  "ENABLE MYSQL"
 
 
-systemctl start mysqlddse 
+systemctl start mysqlddse &>>$LOGFILE
 
 #VALIDATE $?  "START MYSQL"
 
