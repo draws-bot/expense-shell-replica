@@ -8,7 +8,7 @@ echo "plz enter your mysql password"
 read mysql_root_password
 
 
-dnf install mysql-serverfvdfvd -y &>>$LOGFILE
+dnf install mysql-server -y &>>$LOGFILE
 
 #VALIDATE $?  "INSTALLING MYSQL"
 
