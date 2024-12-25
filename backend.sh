@@ -16,7 +16,7 @@ dnf module enable nodejs:20 -y
 #VALIDATE $? "enable nodejs"
 
 
-dnf installfdv nodejs -y
+dnf install nodejs -y
 #VALIDATE $? "install nodejs"
 
 id expense
