@@ -26,10 +26,10 @@ systemctl start mysqld &>>$LOGFILE
 #VALIDATE $?  "SETTING USER AND PASSWORD"
 
 #Below code will be useful for idempotent nature
-mysql -h db.daws78s.online -uroot -p${password} -e 'show databases;' 
+mysql -h db.daws78s.online -uroot -p${password} -e 'show databases;' &>>$LOGFILE 
 if [ $? -ne 0 ]
 then
-     mysql_secure_installation --set-root-pass ${password}
+     mysql_secure_installation --set-root-pass ${password} &>>$LOGFILE
 else
     echo  -e "already username and password is set ..$R..SKIPPING $N"
 fi
